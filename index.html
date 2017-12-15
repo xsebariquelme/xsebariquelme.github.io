@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Smart Framework</title>
+  <link rel="icon" type="image/gif" href="img/gear.png" />
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+  <!-- Plugin CSS -->
+  <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+
+  <!-- Custom styles for this template -->
+  <link href="css/freelancer.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="index.html">Inicio</a>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="masthead bg-primary text-white text-center">
+
+    <div class="container">
+      <div class="row">
+        <img class="img-fluid mb-5 d-block mx-auto" src="img/logo.png" alt="">
+        <h2 class="font-weight-light mb-0">Una herramienta inteligente que permite la selección más adecuada para tus necesidades.</h2>
+      </div>
+
+      <hr>
+
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="panel panel-default">
+            <br>
+            <div class="panel-body">
+
+              <h2>
+                <span id="resultado">
+
+                  <form class="was-validated" id="formulario">
+                    <h4>
+                      <label>Área de la empresa/institución</label>
+                    </h4>
+                    <select class="form-control form-control-lg" id="area" name="area" required>
+                      <option value="">Seleccione una opción...</option>
+                      <option value="1">Agrícola y ganadera</option>
+                      <option value="2">Automatización</option>
+                      <option value="3">Automotriz</option>
+                      <option value="4">Bancos y administración general</option>
+                      <option value="5">Comercio y retail</option>
+                      <option value="6">Construcción y manufactura</option>
+                      <option value="7">Educación</option>
+                      <option value="8">Energética, forestal y minero</option>
+                      <option value="9">Entretenimiento y social</option>
+                      <option value="10">Gobierno y sector público</option>
+                      <option value="11">Salud y alimentación</option>
+                      <option value="12">Seguridad y tecnología</option>
+                      <option value="13">Telecomunicaciones</option>
+                      <option value="14">Transporte y logística</option>
+                      <option value="15">Turismo y viajes</option>
+
+                    </select>
+
+                    <br>
+                    <h4>
+                      <label>Tamaño de la empresa/institución</label>
+                    </h4>
+                    <select class="form-control form-control-lg" id="tamano" name="tamano" required>
+                      <option value="">Seleccione una opción...</option>
+                      <option value="1">Pequeña (menos de 4 personas)</option>
+                      <option value="2">Mediana (5 a 199 personas)</option>
+                      <option value="3">Grande (+200 personas)</option>
+                    </select>
+
+                    <br>
+
+                    <button type="button" class="btn btn-danger btn-block" onclick="getData()">Enviar!</button>
+                  </form>
+
+                </span>
+
+
+              </h2>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+    </div>
+    <hr>
+    <div class="container">
+
+      <h5>
+        <span id="sugerencias"></span>
+      </h5>
+    </div>
+
+
+
+
+  </header>
+
+
+
+
+
+
+
+
+
+  <!-- Footer -->
+  <footer class="footer text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-5 mb-lg-0">
+          <h4 class="text-uppercase mb-4">
+            <a href="http://www.ubiobio.cl">Universidad del Bío-Bío</a>
+            </p>
+          </h4>
+          <p class="lead mb-0">Andrés Bello 720
+            <br>Chillán, Chile</p>
+        </div>
+        <div class="col-md-4">
+          <h4 class="text-uppercase mb-4">Sobre nosotros</h4>
+          <p class="lead mb-0">Smart Framework nació en base a una memoria de título.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="copyright py-4 text-center text-white">
+    <div class="container">
+      Hecho con&nbsp;
+      <i style="color:rgb(231, 76, 60)" class="fa fa-heart"></i>&nbsp;en
+      <a href="http://www.chileestuyo.cl/destino/chillan-playas-y-montanas/" target="_blank">Chillán, Chile </a>
+    </div>
+  </div>
+
+  <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+  <div class="scroll-to-top d-lg-none position-fixed ">
+    <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+
+  <script>
+    function getData() {
+      var area = document.getElementById('area');
+      var tamano = document.getElementById('tamano');
+      var areaValue = area.options[area.selectedIndex].value;
+      var tamanoValue = tamano.options[tamano.selectedIndex].value;
+      var areaText = area.options[area.selectedIndex].text;
+      var tamanoText = tamano.options[tamano.selectedIndex].text;
+      var electron = "ElectronJS.";
+      var haxe = "Haxe.";
+      var nwjs = "NWJS.";
+      var sciter = "Sciter.";
+      var electron_web = 'https://electronjs.org';
+      var haxe_web = 'https://haxe.org';
+      var nwjs_web = 'https://nwjs.io';
+      var sciter_web = 'https://sciter.com';
+      var electron_info = ' Electron es una biblioteca de código abierto desarrollada por GitHub para crear aplicaciones de escritorio multiplataforma con HTML, CSS y JavaScript.';
+      var haxe_info = ' Haxe es un kit de herramientas de código abierto basado en un moderno lenguaje de programación estrictamente de alto nivel, un compilador cruzado de última generación, una biblioteca estándar multiplataforma completa y formas de acceder a las capacidades nativas de cada plataforma.';
+      var nwjs_info = ' NWJS, conocido anteriormente como node-webkit, se basa en NodeJS y Chromium para crear aplicaciones nativas utilizando lenguajes Web.';
+      var sciter_info = ' Sciter permite utilizar HTML y CSS, lenguajes robustos y flexibles para la definición de la interfaz de usuario y la renderización acelerada de la unidad de procesamiento gráfico, obteniendo resultados muy notables.';
+
+
+      localStorage.setItem("areaCode", areaValue);
+      localStorage.setItem("tamanoCode", tamanoValue);
+      localStorage.setItem("areaText", areaText);
+      localStorage.setItem("tamanoText", tamanoText);
+      var validadorArea = areaText.localeCompare('Seleccione una opción...');
+      var validadorTamano = tamanoText.localeCompare('Seleccione una opción...');
+      var opcionSeleccionada = "Para el área " + areaText + " y el tamaño " + tamanoText + " el framework adecuado es";
+      var sugerencia = "Otras opciones sugeridas:";
+      if (validadorArea == 0 || validadorTamano == 0) {
+        console.log("No hay datos");
+      } else {
+        console.log("hay datos validos");
+        switch (areaValue) {
+          case '1':
+            switch (tamanoValue) {
+              case '1':
+
+                document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + electron + '<br>' + electron_info + '<br>' + '<a href="' + electron_web + '"> Conoce mas sobre el framework aqui</a>';
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs + " " + haxe;
+
+                break;
+              case '2':
+                document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + electron + '<br>' + electron_info + '<br>' + '<a href="' + electron_web + '"> Conoce mas sobre el framework aqui</a>';
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs + " " + haxe;
+
+                break;
+              case '3':
+                document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + electron + '<br>' + electron_info + '<br>' + '<a href="' + electron_web + '"> Conoce mas sobre el framework aqui</a>';
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs + " " + haxe;
+                break;
+
+            }
+            break;
+          case '2':
+            switch (tamanoValue) {
+              case '1':
+                document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + electron + '<br>' + electron_info + '<br>' + '<a href="' + electron_web + '"> Conoce mas sobre el framework aqui</a>';
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs;
+
+                break;
+              case '2':
+                document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + electron + '<br>' + electron_info + '<br>' + '<a href="' + electron_web + '"> Conoce mas sobre el framework aqui</a>';
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs;
+                break;
+              case '3':
+                document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + electron + '<br>' + electron_info + '<br>' + '<a href="' + electron_web + '"> Conoce mas sobre el framework aqui</a>';
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs;
+
+                break;
+
+            }
+            break;
+          case '3':
+            switch (tamanoValue) {
+              case '1':
+                document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + haxe + '<br>' + haxe_info + '<br>' + '<a href="' + haxe_web + '"> Conoce mas sobre el framework aqui</a>';
+
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs + " " + electron;
+
+
+                break;
+              case '2':
+                document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + haxe + '<br>' + haxe_info + '<br>' + '<a href="' + haxe_web + '"> Conoce mas sobre el framework aqui</a>';
+
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs + " " + electron;
+
+                break;
+              case '3':
+                document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + haxe + '<br>' + haxe_info + '<br>' + '<a href="' + haxe_web + '"> Conoce mas sobre el framework aqui</a>';
+
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs + " " + electron;
+
+                break;
+
+            }
+            break;
+          case '4':
+            switch (tamanoValue) {
+              case '1':
+                document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + haxe + '<br>' + haxe_info + '<br>' + '<a href="' + haxe_web + '"> Conoce mas sobre el framework aqui</a>';
+
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs+ " "+electron;
+               break;
+              case '2':
+                document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + haxe + '<br>' + haxe_info + '<br>' + '<a href="' + haxe_web + '"> Conoce mas sobre el framework aqui</a>';
+
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs+ " "+electron;
+                break;
+              case '3':
+                document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + haxe + '<br>' + haxe_info + '<br>' + '<a href="' + haxe_web + '"> Conoce mas sobre el framework aqui</a>';
+
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs+ " "+electron;
+                break;
+
+            }
+            break;
+          case '5':
+            switch (tamanoValue) {
+              case '1':
+                document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + electron + '<br>' + electron_info + '<br>' + '<a href="' + electron_web + '"> Conoce mas sobre el framework aqui</a>';
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs;
+                break;
+              case '2':
+                document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + electron + '<br>' + electron_info + '<br>' + '<a href="' + electron_web + '"> Conoce mas sobre el framework aqui</a>';
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs;
+                break;
+              case '3':
+                document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + electron + '<br>' + electron_info + '<br>' + '<a href="' + electron_web + '"> Conoce mas sobre el framework aqui</a>';
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs;
+                break;
+
+            }
+            break;
+          case '6':
+            switch (tamanoValue) {
+              case '1':
+                document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + electron + '<br>' + electron_info + '<br>' + '<a href="' + electron_web + '"> Conoce mas sobre el framework aqui</a>';
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs;
+                break;
+              case '2':
+                document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + electron + '<br>' + electron_info + '<br>' + '<a href="' + electron_web + '"> Conoce mas sobre el framework aqui</a>';
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs;
+                break;
+              case '3':
+                document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + electron + '<br>' + electron_info + '<br>' + '<a href="' + electron_web + '"> Conoce mas sobre el framework aqui</a>';
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs;
+                break;
+
+            }
+            break;
+          case '7':
+            switch (tamanoValue) {
+              case '1':
+                document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + electron + '<br>' + electron_info + '<br>' + '<a href="' + electron_web + '"> Conoce mas sobre el framework aqui</a>';
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs;
+                break;
+              case '2':
+                document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + electron + '<br>' + electron_info + '<br>' + '<a href="' + electron_web + '"> Conoce mas sobre el framework aqui</a>';
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs;
+                break;
+              case '3':
+                document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + electron + '<br>' + electron_info + '<br>' + '<a href="' + electron_web + '"> Conoce mas sobre el framework aqui</a>';
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs;
+                break;
+
+            }
+            break;
+          case '8':
+            switch (tamanoValue) {
+              case '1':
+                document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + electron + '<br>' + electron_info + '<br>' + '<a href="' + electron_web + '"> Conoce mas sobre el framework aqui</a>';
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs;
+                break;
+              case '2':
+                document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + electron + '<br>' + electron_info + '<br>' + '<a href="' + electron_web + '"> Conoce mas sobre el framework aqui</a>';
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs;
+                break;
+              case '3':
+                document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + electron + '<br>' + electron_info + '<br>' + '<a href="' + electron_web + '"> Conoce mas sobre el framework aqui</a>';
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs;
+                break;
+
+            }
+            break;
+          case '9':
+            switch (tamanoValue) {
+              case '1':
+                document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + electron + '<br>' + electron_info + '<br>' + '<a href="' + electron_web + '"> Conoce mas sobre el framework aqui</a>';
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs;
+                break;
+              case '2':
+                document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + electron + '<br>' + electron_info + '<br>' + '<a href="' + electron_web + '"> Conoce mas sobre el framework aqui</a>';
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs;
+                break;
+              case '3':
+                document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + electron + '<br>' + electron_info + '<br>' + '<a href="' + electron_web + '"> Conoce mas sobre el framework aqui</a>';
+
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs;
+
+                break;
+
+            }
+            break;
+          case '10':
+            switch (tamanoValue) {
+              case '1':
+              document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + haxe + '<br>' + haxe_info + '<br>' + '<a href="' + haxe_web + '"> Conoce mas sobre el framework aqui</a>';
+
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs+ " "+electron;
+                break;
+              case '2':
+              document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + haxe + '<br>' + haxe_info + '<br>' + '<a href="' + haxe_web + '"> Conoce mas sobre el framework aqui</a>';
+
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs+ " "+electron;
+                break;
+              case '3':
+              document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + haxe + '<br>' + haxe_info + '<br>' + '<a href="' + haxe_web + '"> Conoce mas sobre el framework aqui</a>';
+
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs+ " "+electron;
+                break;
+
+            }
+            break;
+          case '11':
+            switch (tamanoValue) {
+              case '1':
+                document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + electron + '<br>' + electron_info + '<br>' + '<a href="' + electron_web + '"> Conoce mas sobre el framework aqui</a>';
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs;
+                break;
+              case '2':
+                document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + electron + '<br>' + electron_info + '<br>' + '<a href="' + electron_web + '"> Conoce mas sobre el framework aqui</a>';
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs;
+                break;
+              case '3':
+                document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + electron + '<br>' + electron_info + '<br>' + '<a href="' + electron_web + '"> Conoce mas sobre el framework aqui</a>';
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs;
+                break;
+
+            }
+            break;
+          case '12':
+            switch (tamanoValue) {
+              case '1':
+                document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + sciter + '<br>' + sciter_info + '<br>' + '<a href="' + sciter_web + '"> Conoce mas sobre el framework aqui</a>';
+                document.getElementById('sugerencias').textContent = sugerencia +" "+electron+ " " + nwjs ;
+                break;
+              case '2':
+              document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + sciter + '<br>' + sciter_info + '<br>' + '<a href="' + sciter_web + '"> Conoce mas sobre el framework aqui</a>';
+                document.getElementById('sugerencias').textContent = sugerencia +" "+electron+ " " + nwjs ;
+                break;
+              case '3':
+              document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + sciter + '<br>' + sciter_info + '<br>' + '<a href="' + sciter_web + '"> Conoce mas sobre el framework aqui</a>';
+              document.getElementById('sugerencias').textContent = sugerencia +" "+electron+ " " + nwjs ;
+                break;
+
+            }
+            break;
+          case '13':
+            switch (tamanoValue) {
+              case '1':
+                document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + electron + '<br>' + electron_info + '<br>' + '<a href="' + electron_web + '"> Conoce mas sobre el framework aqui</a>';
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs;
+                break;
+              case '2':
+                document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + electron + '<br>' + electron_info + '<br>' + '<a href="' + electron_web + '"> Conoce mas sobre el framework aqui</a>';
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs;
+                break;
+              case '3':
+                document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + electron + '<br>' + electron_info + '<br>' + '<a href="' + electron_web + '"> Conoce mas sobre el framework aqui</a>';
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs;
+                break;
+
+            }
+            break;
+          case '14':
+            switch (tamanoValue) {
+              case '1':
+                document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + electron + '<br>' + electron_info + '<br>' + '<a href="' + electron_web + '"> Conoce mas sobre el framework aqui</a>';
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs;
+                break;
+              case '2':
+                document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + electron + '<br>' + electron_info + '<br>' + '<a href="' + electron_web + '"> Conoce mas sobre el framework aqui</a>';
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs;
+                break;
+              case '3':
+                document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + electron + '<br>' + electron_info + '<br>' + '<a href="' + electron_web + '"> Conoce mas sobre el framework aqui</a>';
+                document.getElementById('sugerencias').textContent = sugerencia + " " + nwjs;
+                break;
+
+            }
+            break;
+          case '15':
+            switch (tamanoValue) {
+              case '1':
+              document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + sciter + '<br>' + sciter_info + '<br>' + '<a href="' + sciter_web + '"> Conoce mas sobre el framework aqui</a>';
+              document.getElementById('sugerencias').textContent = sugerencia +" "+electron+ " " + nwjs ;
+                break;
+              case '2':
+              document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + sciter + '<br>' + sciter_info + '<br>' + '<a href="' + sciter_web + '"> Conoce mas sobre el framework aqui</a>';
+              document.getElementById('sugerencias').textContent = sugerencia +" "+electron+ " " + nwjs ;
+                break;
+              case '3':
+              document.getElementById('resultado').innerHTML = opcionSeleccionada + " " + sciter + '<br>' + sciter_info + '<br>' + '<a href="' + sciter_web + '"> Conoce mas sobre el framework aqui</a>';
+              document.getElementById('sugerencias').textContent = sugerencia +" "+electron+ " " + nwjs ;
+                break;
+
+            }
+            break;
+        }
+
+      }
+
+    }
+  </script>
+
+
+
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+
+  <!-- Custom scripts for this template -->
+  <script src="js/freelancer.min.js"></script>
+
+</body>
+
+</html>
